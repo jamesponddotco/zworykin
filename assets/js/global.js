@@ -1,35 +1,43 @@
-jQuery( document ).ready( function( $ ) {
+document.addEventListener( 'DOMContentLoaded', function () {
+	// Toggle navigation.
+	const navToggle = document.querySelector( '.nav-toggle' );
+	const siteNav = document.querySelector( '.site-nav' );
+	const body = document.body;
 
-	// Toggle navigation
-	$( '.nav-toggle' ).on( 'click', function(){
-		$( this ).add( '.site-nav' ).toggleClass( 'active' );
-		$( 'body' ).toggleClass( 'lock-screen' );
-	} );
+	if ( navToggle ) {
+		navToggle.addEventListener( 'click', function () {
+			this.classList.toggle( 'active' );
+			siteNav.classList.toggle( 'active' );
+			body.classList.toggle( 'lock-screen' );
+		} );
+	}
 
-	// Resize videos after their container
-	var vidSelector = ".post iframe, .post object, .post video, .widget-content iframe, .widget-content object, .widget-content iframe";
-	var resizeVideo = function(sSel) {
-		$( sSel ).each(function() {
-			var $video = $(this),
-				$container = $video.parent(),
-				iTargetWidth = $container.width();
+	// Resize videos after their container.
+	const vidSelector =
+		'.post iframe, .post object, .post video, .widget-content iframe, .widget-content object, .widget-content iframe';
 
-			if ( !$video.attr("data-origwidth") ) {
-				$video.attr("data-origwidth", $video.attr("width"));
-				$video.attr("data-origheight", $video.attr("height"));
+	function resizeVideo( selector ) {
+		const videos = document.querySelectorAll( selector );
+
+		for ( const video of videos ) {
+			const container = video.parentElement;
+			const targetWidth = container.offsetWidth;
+
+			if ( ! Object.hasOwn( video.dataset, 'origwidth' ) ) {
+				video.dataset.origwidth = video.width;
+				video.dataset.origheight = video.height;
 			}
 
-			var ratio = iTargetWidth / $video.attr("data-origwidth");
+			const ratio = targetWidth / video.dataset.origwidth;
 
-			$video.css("width", iTargetWidth + "px");
-			$video.css("height", ( $video.attr("data-origheight") * ratio ) + "px");
-		});
-	};
+			video.style.width = targetWidth + 'px';
+			video.style.height = video.dataset.origheight * ratio + 'px';
+		}
+	}
 
 	resizeVideo( vidSelector );
 
-	$( window ).resize( function() {
+	window.addEventListener( 'resize', function () {
 		resizeVideo( vidSelector );
 	} );
-
-});
+} );
