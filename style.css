@@ -922,9 +922,14 @@ main {
 .post-preview {
 	position: relative;
 	display: block;
-	padding: 10px;
+	padding: 20px 0 20px 0;
+	border-top: 1px solid rgba(0, 0, 0, 0.13);
 	text-decoration: none;
 	transition: none;
+}
+
+.post-preview:last-child {
+	border-bottom: 1px solid rgba(0, 0, 0, 0.13);
 }
 
 .no-js .posts .post-preview {
@@ -1016,8 +1021,14 @@ main {
 }
 
 .post-preview h2 {
+	font-size: 32px;
 	line-height: 1.25;
 	word-break: break-word;
+}
+
+.post-preview time {
+	color: rgba(0, 0, 0, 0.55);
+	font-size: 18px;
 }
 
 .post-preview:hover .preview-image::after,
