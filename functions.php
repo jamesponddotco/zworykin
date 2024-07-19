@@ -256,7 +256,7 @@ function zworykin_filter_archive_title( $title ): string {
 		// Translators: %s is the search query.
 		$title = sprintf( __( 'Search: %s', 'zworykin' ), '&ldquo;' . get_search_query() . '&rdquo;' );
 	} elseif ( is_home() ) {
-		if ( 0 === $paged && get_theme_mod( 'zworykin_home_title' ) === true ) {
+		if ( 0 == $paged && get_theme_mod( 'zworykin_home_title' ) ) {
 			$title = get_theme_mod( 'zworykin_home_title' );
 		} else {
 			$title = '';
