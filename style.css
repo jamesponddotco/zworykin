@@ -922,7 +922,6 @@ main {
 .post-preview {
 	position: relative;
 	display: block;
-	width: 50%;
 	padding: 10px;
 	transition: none;
 }
@@ -999,25 +998,10 @@ main {
 }
 
 .post-preview header {
-	position: absolute;
-	top: 40px;
-	right: 40px;
-	bottom: 40px;
-	left: 40px;
-	display: -webkit-box;
-	display: -ms-flexbox;
 	display: flex;
-	overflow: hidden;
-	-ms-flex-direction: column;
-	flex-direction: column;
-	justify-content: center;
-	-webkit-box-direction: normal;
-	-webkit-box-orient: vertical;
-	-webkit-box-pack: center;
-	-ms-flex-pack: center;
-	opacity: 0;
-	text-align: center;
-	transform: translateY(10px);
+	flex-direction: row;
+	align-items: center;
+	justify-content: space-between;
 }
 
 .post-preview .sticky-post {
@@ -1031,10 +1015,7 @@ main {
 }
 
 .post-preview h2 {
-	width: 100%;
-	color: #fff;
 	line-height: 1.25;
-	text-align: center;
 	word-break: break-word;
 }
 
