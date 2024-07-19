@@ -287,6 +287,22 @@ function hamilton_filter_archive_description( $description ): string {
 	return $description;
 }
 
+/**
+ * Output the post date with proper HTML5 time attributes.
+ *
+ * @return void
+ */
+function hamilton_entry_date(): void {
+	$date_string = get_the_date();
+	$datetime    = get_the_time( 'c' );
+
+	printf(
+		'<time datetime="%s">%s</time>',
+		esc_attr( $datetime ),
+		esc_html( $date_string )
+	);
+}
+
 add_action( 'after_setup_theme', 'hamilton_add_block_editor_features' );
 /**
  * Declare support for the block editor and some of its features.
