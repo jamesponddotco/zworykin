@@ -106,7 +106,7 @@ if ( have_posts() ) :
 
 					<?php endif; ?>
 
-					<p class="post-date"><a href="<?php the_permalink(); ?>"><?php the_date( get_option( 'date_format' ) ); ?></a>
+					<p class="post-date"><a href="<?php the_permalink(); ?>"><?php hamilton_entry_date(); ?></a>
 
 				</div><!-- .meta -->
 

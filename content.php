@@ -18,7 +18,7 @@ declare ( strict_types = 1 );
 
 		<?php the_title( '<h2 class="title">', '</h2>' ); ?>
 
-		<?php the_date(); ?>
+		<?php hamilton_entry_date(); ?>
 
 	</header>
 
