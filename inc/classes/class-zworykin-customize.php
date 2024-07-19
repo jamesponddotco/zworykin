@@ -33,26 +33,6 @@ if ( ! class_exists( 'Zworykin_Customize' ) ) :
 				)
 			);
 
-			// Dark Mode.
-			$wp_customize->add_setting(
-				'zworykin_dark_mode',
-				array(
-					'capability'        => 'edit_theme_options',
-					'sanitize_callback' => 'zworykin_sanitize_checkbox',
-					'transport'         => 'postMessage',
-				)
-			);
-
-			$wp_customize->add_control(
-				'zworykin_dark_mode',
-				array(
-					'type'        => 'checkbox',
-					'section'     => 'colors', // Default WP section added by background_color.
-					'label'       => __( 'Dark Mode', 'zworykin' ),
-					'description' => __( 'Displays the site with white text and black background. If Background Color is set, only the text color will change.', 'zworykin' ),
-				)
-			);
-
 			// Always show preview titles.
 			$wp_customize->add_setting(
 				'zworykin_alt_nav',
@@ -73,46 +53,6 @@ if ( ! class_exists( 'Zworykin_Customize' ) ) :
 				)
 			);
 
-			// Maximum number of columns.
-			$wp_customize->add_setting(
-				'zworykin_max_columns',
-				array(
-					'capability'        => 'edit_theme_options',
-					'sanitize_callback' => 'zworykin_sanitize_checkbox',
-					'transport'         => 'postMessage',
-				)
-			);
-
-			$wp_customize->add_control(
-				'zworykin_max_columns',
-				array(
-					'type'        => 'checkbox',
-					'section'     => 'zworykin_options',
-					'label'       => __( 'Three Columns', 'zworykin' ),
-					'description' => __( 'Check to use three columns in the post grid on desktop.', 'zworykin' ),
-				)
-			);
-
-			// Always show preview titles.
-			$wp_customize->add_setting(
-				'zworykin_show_titles',
-				array(
-					'capability'        => 'edit_theme_options',
-					'sanitize_callback' => 'zworykin_sanitize_checkbox',
-					'transport'         => 'postMessage',
-				)
-			);
-
-			$wp_customize->add_control(
-				'zworykin_show_titles',
-				array(
-					'type'        => 'checkbox',
-					'section'     => 'zworykin_options', // Add a default or your own section.
-					'label'       => __( 'Show Preview Titles', 'zworykin' ),
-					'description' => __( 'Check to always show the titles in the post previews.', 'zworykin' ),
-				)
-			);
-
 			// Set the home page title.
 			$wp_customize->add_setting(
 				'zworykin_home_title',
@@ -129,6 +69,25 @@ if ( ! class_exists( 'Zworykin_Customize' ) ) :
 					'section'     => 'zworykin_options', // Add a default or your own section.
 					'label'       => __( 'Front Page Title', 'zworykin' ),
 					'description' => __( 'The title you want shown on the front page when the "Front page displays" setting is set to "Your latest posts" in Settings > Reading.', 'zworykin' ),
+				)
+			);
+
+			// Set the home page excerpt.
+			$wp_customize->add_setting(
+				'zworykin_home_excerpt',
+				array(
+					'capability'        => 'edit_theme_options',
+					'sanitize_callback' => 'sanitize_textarea_field',
+				)
+			);
+
+			$wp_customize->add_control(
+				'zworykin_home_excerpt',
+				array(
+					'type'        => 'textarea',
+					'section'     => 'zworykin_options', // Add a default or your own section.
+					'label'       => __( 'Front Page Excerpt', 'zworykin' ),
+					'description' => __( 'The excerpt you want shown on the front page when the "Front page displays" setting is set to "Your latest posts" in Settings > Reading.', 'zworykin' ),
 				)
 			);
 
