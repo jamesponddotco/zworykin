@@ -923,6 +923,7 @@ main {
 	position: relative;
 	display: block;
 	padding: 10px;
+	text-decoration: none;
 	transition: none;
 }
 
