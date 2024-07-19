@@ -1,0 +1,13 @@
+{
+  "devDependencies": {
+    "@wordpress/eslint-plugin": "^20.0.0",
+    "@wordpress/stylelint-config": "^22.3.0",
+    "eslint-config-prettier": "^9.1.0",
+    "eslint-plugin-unicorn": "^54.0.0",
+    "prettier": "npm:wp-prettier@^3.0.3",
+    "stylelint-config-idiomatic-order": "^10.0.0",
+    "stylelint-declaration-block-no-ignored-properties": "^2.8.0",
+    "stylelint-high-performance-animation": "^1.10.0",
+    "stylelint-selector-no-empty": "^1.0.9"
+  }
+}

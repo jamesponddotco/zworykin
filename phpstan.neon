@@ -1,0 +1,8 @@
+parameters:
+  level: 9
+  inferPrivatePropertyTypeFromConstructor: true
+  paths:
+    - %currentWorkingDirectory%/
+  excludePaths:
+    - %currentWorkingDirectory%/node_modules/
+    - %currentWorkingDirectory%/vendor/

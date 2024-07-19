@@ -1,0 +1,2721 @@
+/*-----------------------------------------------------------------------------
+
+	Theme Name: Hamilton
+    Text Domain: hamilton
+	Version: 2.1.2
+	Description: Hamilton is a clean WordPress portfolio theme for creatives.
+	Author: Anders Norén
+	Author URI: https://andersnoren.se
+	License: GNU General Public License version 2.0
+	License URI: http://www.gnu.org/licenses/gpl-2.0.html
+	Theme URI: https://andersnoren.se/teman/hamilton-wordpress-theme/
+	Requires at least: 4.5
+	Requires PHP: 5.4
+	Tested up to: 6.0
+
+	All files, unless otherwise stated, are released under the GNU General
+	Public License version 2.0 (http://www.gnu.org/licenses/gpl-2.0.html)
+
+-------------------------------------------------------------------------------
+
+	1.	Document Setup
+	2.  Element Base
+	3.  Structure
+	4.	Site Header
+	5.	Site Navigation
+	6.	Archive
+	7.  Singular
+	8.	Blocks
+	9.	Entry Content
+	10.	Comments
+	11.	Page Templates
+	12. Site Pagination
+	13. Site Footer
+	14. Media Queries
+
+---------------------------------------------------------------------------- */
+
+/*	1. Document Setup
+/* ------------------------------------------------------------------------- */
+
+body {
+	border: none;
+	background: #fff;
+	color: #000;
+	font-family: "Libre Franklin", -apple-system, "Helvetica Neue", sans-serif;
+	font-size: 20px;
+}
+
+body.dark-mode {
+	background: #1d1d1d;
+	color: #fff;
+}
+
+body.lock-screen {
+	position: fixed;
+	width: 100%;
+	height: 100%;
+}
+
+body * {
+	-webkit-box-sizing: border-box;
+	-moz-box-sizing: border-box;
+	box-sizing: border-box;
+	-moz-osx-font-smoothing: grayscale;
+	-webkit-font-smoothing: antialiased;
+}
+
+a {
+	color: inherit;
+	text-decoration: underline;
+}
+
+pre a {
+	border-bottom-color: currentcolor;
+}
+
+a:hover {
+	text-decoration: none;
+}
+
+img {
+	display: block;
+	max-width: 100%;
+	height: auto;
+}
+
+.group::after,
+.pagination::after,
+.entry-content::after,
+.gallery::after {
+	display: block;
+	clear: both;
+	content: "";
+}
+
+::selection {
+	background: #000;
+	color: #fff;
+}
+
+input::-webkit-input-placeholder {
+	color: #767676;
+}
+
+input:-ms-input-placeholder {
+	color: #767676;
+}
+
+input::-moz-placeholder {
+	color: #767676;
+}
+
+/*	2.	Element Base
+/* ------------------------------------------------------------------------- */
+
+p {
+	margin: 0 0 1.5em 0;
+	line-height: 1.5;
+}
+
+dd,
+dt {
+	line-height: 1.5;
+}
+
+dt {
+	font-weight: 700;
+}
+
+dd + dt {
+	margin-top: 15px;
+}
+
+code {
+	padding: 0 1px;
+	background: rgba(0, 0, 0, 0.1);
+}
+
+address {
+	padding: 20px;
+	background: rgba(0, 0, 0, 0.1);
+}
+
+.dark-mode code,
+.dark-mode address {
+	background: rgba(255, 255, 255, 0.2);
+}
+
+pre {
+	padding: 20px;
+	margin: 2em 0;
+	background: #000;
+	color: #fff;
+	font-size: 0.8em;
+	line-height: 1.4;
+	word-wrap: break-word;
+}
+
+.dark-mode pre {
+	background: #fff;
+	color: #000;
+}
+
+/* Headings ---------------------------------- */
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+	margin: 60px 0 30px;
+	line-height: 1.2;
+}
+
+h1 {
+	font-size: 40px;
+	font-weight: 300;
+}
+
+h2 {
+	font-size: 32px;
+	font-weight: 300;
+}
+
+h3 {
+	font-size: 28px;
+}
+
+h4 {
+	font-size: 24px;
+}
+
+h5 {
+	font-size: 20px;
+	font-weight: 500;
+}
+
+h6 {
+	font-size: 14px;
+	font-weight: 700;
+	letter-spacing: 0.025em;
+	text-transform: uppercase;
+}
+
+/* Lists ------------------------------------- */
+
+ol,
+ul {
+	margin: 0.5em 0 1.5em 40px;
+}
+
+li ol,
+li ul {
+	margin: 0.5em 0 0.5em 40px;
+}
+
+li {
+	margin: 0.5em 0;
+	line-height: 1.5;
+}
+
+/* Block Quote ------------------------------- */
+
+blockquote {
+	padding: 0 0 0 30px;
+	margin: 0 0 30px 0;
+}
+
+blockquote p {
+	font-weight: 700;
+	hanging-punctuation: first;
+}
+
+blockquote cite::before {
+	content: "— ";
+}
+
+/* Separator --------------------------------- */
+
+hr {
+	width: 50%;
+	border: none;
+	border-top: 1px solid currentcolor;
+	margin: 50px auto;
+	color: rgba(0, 0, 0, 0.13);
+}
+
+.dark-mode hr {
+	color: rgba(255, 255, 255, 0.13);
+}
+
+/* Tables ------------------------------------ */
+
+table {
+	overflow: hidden;
+	width: 100%;
+	max-width: 100%;
+	margin: 2em auto;
+	border-collapse: collapse;
+	border-spacing: 0;
+	empty-cells: show;
+	font-size: 0.9em;
+}
+
+th,
+td {
+	overflow: visible;
+	padding: 2.5%;
+	margin: 0;
+	line-height: 1.4;
+}
+
+caption {
+	padding-bottom: 2.5%;
+	font-size: 13px;
+	font-weight: 700;
+	text-align: center;
+	text-transform: uppercase;
+}
+
+thead {
+	vertical-align: bottom;
+	white-space: nowrap;
+}
+
+th {
+	font-weight: 700;
+}
+
+tbody > tr:nth-child(odd) {
+	background: rgba(0, 0, 0, 0.05);
+}
+
+.dark-mode tbody > tr:nth-child(odd) {
+	background: rgba(255, 255, 255, 0.1);
+}
+
+/* Media ------------------------------------- */
+
+figure {
+	margin: 0;
+}
+
+.wp-caption {
+	display: block;
+	max-width: 100%;
+}
+
+.gallery-caption,
+.wp-caption-text,
+:root figcaption {
+	margin: 15px 0 0;
+	font-size: 0.8em;
+}
+
+:root figcaption,
+.wp-caption-text {
+	margin-bottom: 0;
+	color: rgba(0, 0, 0, 0.55);
+}
+
+.dark-mode figcaption,
+.dark-mode .wp-caption-text {
+	color: rgba(255, 255, 255, 0.5);
+}
+
+figcaption a,
+.gallery-caption a,
+.wp-caption-text a {
+	display: inline;
+	color: inherit;
+}
+
+/* Inputs ------------------------------------ */
+
+fieldset {
+	padding: 25px;
+	border: 1px solid rgba(0, 0, 0, 0.2);
+}
+
+.dark-mode fieldset {
+	border-color: rgba(255, 255, 255, 0.3);
+}
+
+form > *:first-child,
+fieldset > *:first-child {
+	margin-top: 0;
+}
+
+form > *:last-child,
+fieldset > *:last-child {
+	margin-bottom: 0;
+}
+
+fieldset legend {
+	padding: 0 15px;
+	font-size: 14px;
+	font-weight: 700;
+}
+
+.dark-mode fieldset legend {
+	color: rgba(255, 255, 255, 0.7);
+}
+
+label {
+	margin-bottom: 8px;
+	font-size: 0.9em;
+}
+
+input[type="text"],
+input[type="password"],
+input[type="email"],
+input[type="url"],
+input[type="date"],
+input[type="month"],
+input[type="time"],
+input[type="datetime"],
+input[type="datetime-local"],
+input[type="week"],
+input[type="number"],
+input[type="search"],
+input[type="tel"],
+input[type="color"],
+textarea {
+	display: block;
+	width: 100%;
+	padding: 15px;
+	border: 1px solid rgba(0, 0, 0, 0.2);
+	border-radius: 0;
+	margin: 0 0 15px 0;
+	-webkit-appearance: none;
+	background: transparent;
+	box-shadow: none;
+	color: #000;
+	font-size: 0.9em;
+}
+
+textarea {
+	height: 200px;
+	line-height: 1.5;
+}
+
+.dark-mode input[type="text"],
+.dark-mode input[type="password"],
+.dark-mode input[type="email"],
+.dark-mode input[type="url"],
+.dark-mode input[type="date"],
+.dark-mode input[type="month"],
+.dark-mode input[type="time"],
+.dark-mode input[type="datetime"],
+.dark-mode input[type="datetime-local"],
+.dark-mode input[type="week"],
+.dark-mode input[type="number"],
+.dark-mode input[type="search"],
+.dark-mode input[type="tel"],
+.dark-mode input[type="color"],
+.dark-mode textarea {
+	border-color: rgba(255, 255, 255, 0.3);
+	color: #fff;
+}
+
+button,
+.button,
+.faux-button,
+.wp-block-button__link,
+.wp-block-file .wp-block-file__button,
+input[type="button"],
+input[type="reset"],
+input[type="submit"] {
+	display: inline-block;
+	padding: 16px 24px 18px;
+	border: none;
+	border-radius: 0;
+	margin: 0;
+	-moz-appearance: none;
+	-webkit-appearance: none;
+	background-color: #000;
+	color: #fff;
+	font-family: inherit;
+	font-size: 16px;
+	font-weight: 700;
+	text-align: center;
+}
+
+.wp-block-button__link {
+	color: inherit;
+}
+
+.is-style-outline .wp-block-button__link {
+	padding: 14px 22px 16px;
+}
+
+.dark-mode button,
+.dark-mode .button,
+.dark-mode .faux-button,
+.dark-mode .wp-block-button__link,
+.dark-mode .wp-block-file .wp-block-file__button,
+.dark-mode input[type="button"],
+.dark-mode input[type="reset"],
+.dark-mode input[type="submit"] {
+	background-color: rgba(255, 255, 255, 0.25);
+}
+
+/*	3.	Structure
+/* ------------------------------------------------------------------------- */
+
+main {
+	display: block;
+}
+
+.section-inner {
+	width: 90%;
+	max-width: 1240px;
+	margin: 0 auto;
+}
+
+.section-inner.medium {
+	max-width: 840px;
+}
+
+.section-inner.thin {
+	max-width: 560px;
+}
+
+.section-inner .section-inner {
+	width: 100%;
+}
+
+/* Base Typography ----------------------------- */
+
+.title {
+	margin: 0;
+	font-size: 40px;
+	font-weight: 300;
+	letter-spacing: -0.025em;
+	line-height: 1.35;
+}
+
+.dark-mode .title {
+	font-weight: 400;
+}
+
+/*	4.	Site Header
+/* ------------------------------------------------------------------------- */
+
+.site-header {
+	position: relative;
+	z-index: 10000;
+	width: 90%;
+	max-width: 1240px;
+	padding: 100px 0;
+	margin: 0 auto 0 auto;
+}
+
+.wp-custom-logo .site-header {
+	padding: 80px 0;
+}
+
+.site-header .site-title {
+	margin: 0;
+	font-size: 24px;
+	font-weight: 500;
+}
+
+.site-header .site-title a {
+	text-decoration: none;
+}
+
+.site-header .site-title a:hover {
+	color: rgba(0, 0, 0, 0.55);
+}
+
+.dark-mode .site-header .site-title a:hover {
+	color: rgba(255, 255, 255, 0.55);
+}
+
+.site-header .custom-logo {
+	display: block;
+	overflow: hidden;
+	max-width: calc(100% - 80px);
+	max-height: 100px;
+	background: no-repeat top left;
+	background-size: contain;
+}
+
+.site-header .custom-logo img {
+	display: block;
+	width: 100%;
+	visibility: hidden;
+}
+
+:root .nav-toggle {
+	position: absolute;
+	top: calc(50% - 15px);
+	right: 0;
+	width: 50px;
+	height: 30px;
+	padding: 0;
+	background-color: transparent;
+	cursor: pointer;
+}
+
+.nav-toggle::before {
+	position: absolute;
+	top: -20px;
+	right: 0;
+	bottom: -20px;
+	left: -20px;
+	display: block;
+	content: "";
+}
+
+.nav-toggle .bar {
+	position: absolute;
+	z-index: 1;
+	top: calc(50% - 1px);
+	right: 0;
+	display: block;
+	width: 22px;
+	height: 2px;
+	margin-top: 0;
+	background-color: rgba(33, 42, 52, 1);
+	opacity: 1;
+	transform: rotate(0deg);
+}
+
+.dark-mode .nav-toggle .bar {
+	background-color: rgba(255, 255, 255, 1);
+}
+
+.nav-toggle .bar:nth-child(1) {
+	margin-top: -7px;
+}
+
+.nav-toggle .bar:nth-child(2) {
+	margin-top: -1px;
+}
+
+.nav-toggle .bar:nth-child(3) {
+	margin-top: 5px;
+}
+
+.nav-toggle.active .bar:nth-child(1) {
+	margin-top: -1px;
+	transform: rotate(45deg);
+}
+
+.nav-toggle.active .bar:nth-child(2) {
+	opacity: 0;
+}
+
+.nav-toggle.active .bar:nth-child(3) {
+	margin-top: -1px;
+	transform: rotate(-45deg);
+}
+
+/*	5.	Site Navigation
+/* ------------------------------------------------------------------------- */
+
+.site-nav {
+	position: fixed;
+	z-index: 9999;
+	top: 0;
+	right: 99999px;
+	bottom: 0;
+	left: -99999px;
+	overflow: auto;
+	margin: 222px 0 0;
+	background: #fff;
+	opacity: 0;
+	transform: translateY(1rem);
+}
+
+.dark-mode .site-nav {
+	background: #1d1d1d;
+}
+
+.site-nav.active {
+	right: 0;
+	left: 0;
+	opacity: 1;
+	transform: translateY(0);
+}
+
+.site-nav ul {
+	margin: 0;
+	list-style: none;
+}
+
+.site-nav ul ul {
+	margin: 20px 0 0 1.33em;
+}
+
+.site-nav ul + ul {
+	margin-left: 20px;
+}
+
+.site-nav .menus > ul {
+	width: calc(50% - 10px);
+	float: left;
+}
+
+.site-nav li {
+	display: block;
+	width: 100%;
+	font-size: 40px;
+	font-weight: 300;
+	letter-spacing: -0.025em;
+	line-height: 1.1;
+}
+
+.site-nav li + li {
+	margin-top: 20px;
+}
+
+.dark-mode .site-nav li {
+	font-weight: 400;
+}
+
+.site-nav ul a {
+	border-bottom: 0.1rem solid transparent;
+	text-decoration: none;
+}
+
+.site-nav ul + ul a {
+	color: rgba(0, 0, 0, 0.55);
+}
+
+.dark-mode .site-nav ul + ul a {
+	color: rgba(255, 255, 255, 0.55);
+}
+
+.site-nav ul:first-child a:hover,
+.site-nav ul:first-child .current-menu-item > a {
+	border-bottom-color: #000;
+}
+
+.dark-mode .site-nav ul:first-child a:hover,
+.dark-mode .site-nav ul:first-child .current-menu-item > a {
+	border-bottom-color: #fff;
+}
+
+.site-nav ul:last-child a:hover,
+.site-nav ul:last-child .current-menu-item > a {
+	border-bottom-color: rgba(0, 0, 0, 0.55);
+}
+
+.dark-mode .site-nav ul:last-child a:hover,
+.dark-mode .site-nav ul:last-child .current-menu-item > a {
+	border-bottom-color: rgba(255, 255, 255, 0.55);
+}
+
+.site-nav footer {
+	padding: 50px 0;
+	background: #fff;
+}
+
+.dark-mode .site-nav footer {
+	background: #1d1d1d;
+}
+
+.site-nav footer a {
+	color: inherit;
+	text-decoration: none;
+}
+
+.site-nav footer p:first-child {
+	float: left;
+}
+
+.site-nav footer p:last-child {
+	color: rgba(0, 0, 0, 0.55);
+	float: right;
+}
+
+.dark-mode .site-nav footer p:last-child {
+	color: rgba(255, 255, 255, 0.55);
+}
+
+/* Alt Nav / No JS Nav ----------------------------- */
+
+.show-alt-nav .site-header {
+	display: flex;
+	align-items: baseline;
+	justify-content: space-between;
+}
+
+.show-alt-nav .nav-toggle,
+.no-js .nav-toggle {
+	display: none;
+}
+
+.show-alt-nav .alt-nav-wrapper,
+.no-js .alt-nav-wrapper {
+	display: block;
+}
+
+.alt-nav-wrapper {
+	display: none;
+	margin-left: 80px;
+}
+
+.alt-nav {
+	position: relative;
+	z-index: 1;
+	display: flex;
+	flex-wrap: wrap;
+	justify-content: flex-end;
+	margin: -10px 0 0 -40px;
+}
+
+.alt-nav li {
+	position: relative;
+	display: block;
+	margin: 0 0 0 0;
+	float: left;
+}
+
+.alt-nav > li {
+	position: relative;
+	margin: 10px 0 0 40px;
+}
+
+.alt-nav > li.menu-item-has-children {
+	padding-right: 16px;
+}
+
+.alt-nav > li.menu-item-has-children::after {
+	position: absolute;
+	top: calc(50% - 2px);
+	right: 0;
+	display: block;
+	border: 5px solid transparent;
+	border-top-color: #000;
+	border-right-width: 4px;
+	border-left-width: 4px;
+	content: "";
+}
+
+.dark-mode .alt-nav > li.menu-item-has-children::after {
+	border-top-color: #fff;
+}
+
+.alt-nav > li.menu-item-has-children:hover {
+	text-decoration: underline;
+}
+
+.alt-nav li a {
+	display: block;
+}
+
+.alt-nav ul {
+	position: absolute;
+	z-index: 1;
+	top: calc(100% + 15px);
+	left: -9999px;
+	width: 200px;
+	padding: 8px 0;
+	border-radius: 3px;
+	margin: 0 0 0 0;
+	background: #000;
+	font-size: 16px;
+	opacity: 0;
+	transform: translateY(10px);
+}
+
+.alt-nav ul::before,
+.alt-nav ul::after {
+	position: absolute;
+	display: block;
+	content: "";
+}
+
+.alt-nav ul::before {
+	right: 0;
+	bottom: 100%;
+	left: 0;
+	height: 15px;
+}
+
+.alt-nav ul::after {
+	bottom: 100%;
+	left: 20px;
+	border: 5px solid transparent;
+	border-bottom-color: #000;
+}
+
+.dark-mode .alt-nav ul::after {
+	border-bottom-color: #fff;
+}
+
+.dark-mode .alt-nav ul {
+	background: #fff;
+}
+
+.alt-nav ul li {
+	width: 100%;
+}
+
+.alt-nav ul a {
+	display: block;
+	padding: 12px 20px;
+	color: #fff;
+}
+
+.dark-mode .alt-nav ul a {
+	color: #000;
+}
+
+.alt-nav ul a:hover {
+	text-decoration: none;
+}
+
+.alt-nav ul li:hover {
+	background: rgba(255, 255, 255, 0.2);
+}
+
+.dark-mode .alt-nav ul li:hover {
+	background: rgba(0, 0, 0, 0.2);
+}
+
+.alt-nav li:hover > ul {
+	left: 0;
+	opacity: 1;
+	transform: translateY(0);
+}
+
+.alt-nav ul ul::before {
+	top: 0;
+	right: 100%;
+	bottom: 0;
+	left: auto;
+	width: 15px;
+	height: 100%;
+}
+
+.alt-nav ul ul::after {
+	top: 22px;
+	left: -10px;
+	border-color: transparent;
+	border-right-color: #000;
+}
+
+.dark-mode .alt-nav ul ul::after {
+	border-color: transparent;
+	border-right-color: #fff;
+}
+
+.alt-nav ul li:hover > ul {
+	top: -8px;
+	left: calc(100% + 15px);
+}
+
+/*	6.	Archive
+/* ------------------------------------------------------------------------- */
+
+.posts {
+	margin: -10px;
+}
+
+.post-preview {
+	position: relative;
+	display: block;
+	width: 50%;
+	padding: 10px;
+	transition: none;
+}
+
+.no-js .posts .post-preview {
+	overflow: hidden;
+	width: 100% !important;
+	max-height: 100vh;
+}
+
+.post-preview.will-spot {
+	opacity: 0;
+	transform: translateY(40px);
+}
+
+.post-preview.spotted {
+	opacity: 1;
+	transform: translateY(0);
+}
+
+.post-preview.jetpack-fade-in {
+	animation: jetpackFadeIn 0.5s 0s 1;
+}
+
+@keyframes jetpackFadeIn {
+
+	from {
+		opacity: 0;
+		transform: translateY(40px);
+	}
+
+	to {
+		opacity: 1;
+		transform: translateY(0);
+	}
+
+}
+
+.preview-image {
+	position: relative;
+	background: rgba(0, 0, 0, 0.1) no-repeat center;
+	background-size: cover;
+}
+
+.dark-mode .preview-image {
+	background-color: rgba(255, 255, 255, 0.1);
+}
+
+.post-preview.fallback-image .preview-image::before {
+	display: block;
+	width: 100%;
+	padding-bottom: 75%;
+	content: "";
+}
+
+.post-preview.fallback-image .preview-image img {
+	display: none;
+}
+
+.preview-image::after {
+	position: absolute;
+	top: 0;
+	right: 0;
+	bottom: 0;
+	left: 0;
+	background: rgba(0, 0, 0, 0.5);
+	content: "";
+	opacity: 0;
+}
+
+.preview-image img {
+	width: 100%;
+	visibility: hidden;
+}
+
+.post-preview header {
+	position: absolute;
+	top: 40px;
+	right: 40px;
+	bottom: 40px;
+	left: 40px;
+	display: -webkit-box;
+	display: -ms-flexbox;
+	display: flex;
+	overflow: hidden;
+	-ms-flex-direction: column;
+	flex-direction: column;
+	justify-content: center;
+	-webkit-box-direction: normal;
+	-webkit-box-orient: vertical;
+	-webkit-box-pack: center;
+	-ms-flex-pack: center;
+	opacity: 0;
+	text-align: center;
+	transform: translateY(10px);
+}
+
+.post-preview .sticky-post {
+	width: 100%;
+	margin-bottom: 15px;
+	color: #fff;
+	font-size: 13px;
+	font-weight: 700;
+	letter-spacing: 2px;
+	text-transform: uppercase;
+}
+
+.post-preview h2 {
+	width: 100%;
+	color: #fff;
+	line-height: 1.25;
+	text-align: center;
+	word-break: break-word;
+}
+
+.post-preview:hover .preview-image::after,
+.show-preview-titles .post-preview .preview-image::after {
+	opacity: 1;
+}
+
+.show-preview-titles .post-preview:hover .preview-image::after {
+	background: rgba(0, 0, 0, 0.6);
+}
+
+.post-preview:hover header,
+.show-preview-titles .post-preview header {
+	opacity: 1;
+	transform: translateY(0);
+}
+
+/* THREE COLUMNS */
+
+@media ( min-width: 1001px ) {
+
+	.three-columns-grid .post-preview {
+		width: 33.3%;
+	}
+
+	.three-columns-grid .post-preview header {
+		top: 30px;
+		right: 30px;
+		bottom: 30px;
+		left: 30px;
+	}
+
+	.three-columns-grid .post-preview h2 {
+		font-size: 28px;
+	}
+
+}
+
+/* Search Results ---------------------------- */
+
+.search-no-results .search-form {
+	display: flex;
+	width: 100%;
+	max-width: 400px;
+	margin: 50px auto 0 auto;
+}
+
+.search-no-results label {
+	display: flex;
+	width: 100%;
+	margin: 0 10px 0 0;
+}
+
+.search-no-results .search-field {
+	margin: 0;
+}
+
+/*	7.	Singular
+/* ------------------------------------------------------------------------- */
+
+/* Page Header ------------------------------- */
+
+.page-header {
+	display: flex;
+	width: 560px;
+	max-width: 100%;
+	min-height: 250px;
+	flex-direction: column;
+	margin: 0 auto 100px auto;
+	text-align: center;
+}
+
+.page-header > div {
+	display: flex;
+	width: 100%;
+	height: 100%;
+	flex: 1;
+	flex-direction: column;
+	justify-content: center;
+}
+
+.page-header p {
+	margin-top: 25px;
+	font-size: 22px;
+	line-height: 1.5;
+}
+
+.page-header p:last-child {
+	margin-bottom: 0;
+}
+
+/* Meta -------------------------------------- */
+
+.meta {
+	margin-top: 30px;
+	color: rgba(0, 0, 0, 0.55);
+	font-size: 18px;
+}
+
+.dark-mode .meta {
+	color: rgba(255, 255, 255, 0.55);
+}
+
+.meta span {
+	margin: 0 5px;
+}
+
+.meta a {
+	border-bottom: 0.1rem solid transparent;
+	text-decoration: none;
+}
+
+.meta a:hover {
+	border-bottom-color: inherit;
+}
+
+/* Page Image -------------------------------- */
+
+.featured-image {
+	position: relative;
+	margin-bottom: 50px;
+}
+
+.featured-image img {
+	width: 100%;
+}
+
+/* Linked Pages ------------------------------ */
+
+.linked-pages {
+	margin-top: 50px;
+}
+
+/* Meta Bottom ------------------------------- */
+
+.meta.bottom {
+	display: flex;
+	flex-wrap: wrap;
+	justify-content: space-between;
+	margin-top: 50px;
+}
+
+.meta.bottom p {
+	margin: 0;
+	line-height: 1.5;
+}
+
+.meta.bottom p.tags {
+	display: flex;
+	flex-wrap: wrap;
+	margin: 0 0 0 -20px;
+}
+
+.meta.bottom p.tags span {
+	margin: 0 0 10px 20px;
+}
+
+.meta-bottom .post-date {
+	margin-left: 20px;
+}
+
+/*	8.	Blocks
+/* ------------------------------------------------------------------------- */
+
+/* Block Editor Accent Colors ---------------- */
+
+:root .has-background {
+	background-color: #000;
+}
+
+:root .has-black-color {
+	color: #000;
+}
+
+:root .has-black-background-color {
+	background-color: #000;
+}
+
+:root .has-dark-gray-color {
+	color: #333;
+}
+
+:root .has-dark-gray-color a {
+	border-bottom-color: #333;
+}
+
+:root .has-dark-gray-color a:hover {
+	color: #333;
+}
+
+:root .has-dark-gray-background-color {
+	background-color: #333;
+}
+
+:root .has-medium-gray-color {
+	color: #555;
+}
+
+:root .has-medium-gray-color a {
+	border-bottom-color: #555;
+}
+
+:root .has-medium-gray-color a:hover {
+	color: #555;
+}
+
+:root .has-medium-gray-background-color {
+	background-color: #555;
+}
+
+:root .has-light-gray-color {
+	color: #777;
+}
+
+:root .has-light-gray-color a {
+	border-bottom-color: #777;
+}
+
+:root .has-light-gray-color a:hover {
+	color: #777;
+}
+
+:root .has-light-gray-background-color {
+	background-color: #777;
+}
+
+:root .has-white-color {
+	color: #fff;
+}
+
+:root .has-white-color a {
+	border-bottom-color: #fff;
+}
+
+:root .has-white-color a:hover {
+	color: #fff;
+}
+
+:root .has-white-background-color {
+	background-color: #fff;
+}
+
+/* Block Editor Font Sizes ------------------- */
+
+:root .has-small-font-size {
+	font-size: 0.842em;
+}
+
+:root .has-regular-font-size {
+	font-size: 1em;
+}
+
+:root .has-large-font-size,
+:root .has-larger-font-size {
+	line-height: 1.5;
+}
+
+:root .has-large-font-size {
+	font-size: 2.2em;
+}
+
+:root .has-larger-font-size {
+	font-size: 1.4em;
+}
+
+/* Block: Base Margins ----------------------- */
+
+:root *[class*="_inner-container"] > *:first-child {
+	margin-top: 0;
+}
+
+:root *[class*="_inner-container"] > *:last-child {
+	margin-bottom: 0;
+}
+
+.wp-block-archives,
+.wp-block-button,
+.wp-block-buttons,
+.wp-block-categories,
+.wp-block-code,
+.wp-block-columns,
+.wp-block-cover,
+.wp-block-cover-image,
+.wp-block-embed,
+.wp-block-gallery,
+.wp-block-group,
+.wp-block-image,
+.wp-block-latest-comments,
+.wp-block-latest-posts,
+.wp-block-media-text,
+.wp-block-preformatted,
+.wp-block-pullquote,
+.wp-block-social-links,
+.wp-block-quote,
+.wp-block-quote.is-large,
+.wp-block-quote.is-style-large,
+.wp-block-verse,
+.wp-block-video {
+	margin-top: 30px;
+	margin-bottom: 30px;
+}
+
+/* Block: Audio ------------------------------ */
+
+.wp-block-audio audio {
+	width: 100%;
+}
+
+/* Block: Buttons ---------------------------- */
+
+.wp-block-buttons .wp-block-button {
+	margin-top: 0;
+}
+
+/* Block: Column ----------------------------- */
+
+.wp-block-column {
+	padding: 0 5px;
+}
+
+/* Block: Cover Image ------------------------ */
+
+.wp-block-cover,
+.wp-block-cover-image {
+	color: #fff;
+}
+
+.wp-block-cover-image p {
+	font-weight: 400;
+}
+
+/* Block: File ------------------------------- */
+
+.entry-content .wp-block-file {
+	display: flex;
+	align-items: center;
+	justify-content: space-between;
+	padding: 20px;
+	border-radius: 4px;
+	margin: 30px 0;
+	background: rgba(0, 0, 0, 0.05);
+}
+
+.entry-content .wp-block-file a:not(.wp-block-file__button) {
+	border: none;
+	font-weight: 500;
+	text-decoration: none;
+}
+
+.entry-content .wp-block-file__button {
+	flex-shrink: 0;
+}
+
+/* Block: Gallery ---------------------------- */
+
+.wp-block-gallery .blocks-gallery-image figcaption,
+.wp-block-gallery .blocks-gallery-item figcaption {
+	padding-bottom: 10px;
+	margin: 0;
+	color: #fff;
+}
+
+.wp-block-gallery > .blocks-gallery-grid {
+	margin-bottom: -16px;
+}
+
+ul.wp-block-gallery + .wp-block-gallery:not(.alignfull):not(.alignwide):not(.alignleft):not(.alignright):not(.aligncenter):not(.alignone) {
+	margin-top: -30px;
+}
+
+ul.wp-block-gallery.alignwide + .wp-block-gallery.alignwide,
+ul.wp-block-gallery.alignfull + .wp-block-gallery.alignfull {
+	margin-top: -2.5em;
+}
+
+figure.wp-block-gallery + .wp-block-gallery:not(.alignfull):not(.alignwide):not(.alignleft):not(.alignright):not(.aligncenter):not(.alignone) {
+	margin-top: calc(( 30px - 16px ) / -1);
+}
+
+figure.wp-block-gallery.alignwide + .wp-block-gallery.alignwide,
+figure.wp-block-gallery.alignfull + .wp-block-gallery.alignfull {
+	margin-top: calc(( 2.5em - 16px ) / -1);
+}
+
+/* Block: Image ------------------------------ */
+
+.wp-block-image .aligncenter > figcaption,
+.wp-block-image .alignleft > figcaption,
+.wp-block-image .alignright > figcaption,
+.wp-block-image.is-resized > figcaption {
+	display: block;
+}
+
+/* Block: Latest Posts ----------------------- */
+
+.wp-block-latest-posts {
+	margin-left: 0;
+}
+
+.wp-block-latest-posts__post-date {
+	color: rgba(0, 0, 0, 0.5);
+	font-size: 1em;
+}
+
+.dark-mode .wp-block-latest-posts__post-date {
+	color: rgba(255, 255, 255, 0.5);
+}
+
+/* Block: Media and Text --------------------- */
+
+.wp-block-media-text__content > *:first-child {
+	margin-top: 0;
+}
+
+.wp-block-media-text__content > *:last-child {
+	margin-bottom: 0;
+}
+
+/* Block: Pullquote -------------------------- */
+
+.wp-block-pullquote,
+.wp-block-pullquote blockquote {
+	padding: 0;
+	border: none;
+	background: none;
+}
+
+.wp-block-pullquote blockquote {
+	margin: 0;
+}
+
+.wp-block-pullquote blockquote::before {
+	content: none;
+}
+
+.wp-block-pullquote.alignleft,
+.wp-block-pullquote.alignright {
+	max-width: 60%;
+}
+
+.wp-block-pullquote blockquote p,
+.wp-block-pullquote.alignleft blockquote p,
+.wp-block-pullquote.alignright blockquote p {
+	margin-bottom: 1em;
+	font-size: 29px;
+	font-weight: 700;
+	letter-spacing: -0.025em;
+}
+
+.wp-block-pullquote.alignleft blockquote p,
+.wp-block-pullquote.alignright blockquote p {
+	line-height: 1.3;
+}
+
+/* Block: Quote ------------------------------ */
+
+.entry-content .wp-block-quote.is-large,
+.entry-content .wp-block-quote.is-style-large {
+	padding: 0 0 0 30px;
+	margin: 0 0 30px 0;
+}
+
+.entry-content blockquote p:last-child {
+	margin-bottom: 0;
+}
+
+.wp-block-quote.is-large p,
+.wp-block-quote.is-style-large p {
+	font-size: 1.25em;
+	font-style: normal;
+	line-height: 1.5;
+}
+
+.wp-block-quote.is-large cite,
+.wp-block-quote.is-style-large cite {
+	display: block;
+	font-size: 0.8em;
+	text-align: left;
+}
+
+/* Block: Separator -------------------------- */
+
+hr.is-style-wide,
+hr.is-style-dots {
+	width: 100%;
+}
+
+/* Block: Social ----------------------------- */
+
+.wp-social-link {
+	margin: 0 8px 0 0;
+}
+
+/*	9.	Entry Content
+/* ------------------------------------------------------------------------- */
+
+.entry-content {
+	position: relative;
+}
+
+.entry-content > *:first-child {
+	margin-top: 0;
+}
+
+.entry-content > *:last-child {
+	margin-bottom: 0;
+}
+
+.entry-content p.has-background {
+	padding: 20px;
+}
+
+.entry-content h1 + h1,
+.entry-content h1 + h2,
+.entry-content h1 + h3,
+.entry-content h1 + h4,
+.entry-content h1 + h5,
+.entry-content h1 + h6,
+.entry-content h2 + h1,
+.entry-content h2 + h2,
+.entry-content h2 + h3,
+.entry-content h2 + h4,
+.entry-content h2 + h5,
+.entry-content h2 + h6,
+.entry-content h3 + h1,
+.entry-content h3 + h2,
+.entry-content h3 + h3,
+.entry-content h3 + h4,
+.entry-content h3 + h5,
+.entry-content h3 + h6,
+.entry-content h4 + h1,
+.entry-content h4 + h2,
+.entry-content h4 + h3,
+.entry-content h4 + h4,
+.entry-content h4 + h5,
+.entry-content h4 + h6,
+.entry-content h5 + h1,
+.entry-content h5 + h2,
+.entry-content h5 + h3,
+.entry-content h5 + h4,
+.entry-content h5 + h5,
+.entry-content h5 + h6,
+.entry-content h6 + h1,
+.entry-content h6 + h2,
+.entry-content h6 + h3,
+.entry-content h6 + h4,
+.entry-content h6 + h5,
+.entry-content h6 + h6 {
+	margin-top: 30px;
+}
+
+p.has-drop-cap:not(:focus)::first-letter {
+	margin: 0.1em 0.05em 0 -0.075em;
+	font-size: 7em;
+	font-weight: 300;
+}
+
+/* Pull Quotes ------------------------------- */
+
+.entry-content .pull {
+	position: absolute;
+	width: 280px;
+	font-size: 29px;
+	font-weight: 700;
+	letter-spacing: -0.025em;
+	line-height: 1.2;
+}
+
+.entry-content .pull.left {
+	right: calc(100% + 40px);
+	hanging-punctuation: first;
+}
+
+.entry-content .pull.right {
+	left: calc(100% + 40px);
+	hanging-punctuation: last;
+	text-align: right;
+}
+
+/* Alignment Classes ------------------------- */
+
+.alignleft,
+.alignright {
+	max-width: 40%;
+	margin-bottom: 20px;
+}
+
+.alignleft {
+	margin: 5px 40px 30px -80px;
+	float: left;
+}
+
+.alignright {
+	margin: 5px -80px 30px 40px;
+	float: right;
+}
+
+.entry-content .alignnone,
+.entry-content .aligncenter,
+.entry-content .alignwide,
+.entry-content .alignfull {
+	margin: 2.5em auto;
+}
+
+.entry-content .alignfull {
+	width: 100vw;
+	max-width: 100vw;
+	margin-left: calc(50% - 50vw);
+}
+
+.entry-content .wp-block-image.alignfull figcaption {
+	padding: 0 5%;
+}
+
+.entry-content .alignwide {
+	width: 1240px;
+	max-width: 1240px;
+	margin-left: calc(50% - 620px);
+}
+
+.alignnone {
+	max-width: calc(100% + 160px);
+	margin-right: -80px;
+	margin-left: -80px;
+}
+
+.alignnone img {
+	width: 100%;
+}
+
+/* VANILLA GALLERIES */
+
+.gallery {
+	position: relative;
+	left: calc(50% - 630px);
+	display: flex;
+	width: 1260px;
+	flex-wrap: wrap;
+	padding: 0;
+	margin: 50px 0 30px;
+}
+
+.gallery + .gallery {
+	margin-top: -30px;
+}
+
+.gallery .gallery-item {
+	position: relative;
+	display: block;
+	width: 100%;
+	padding: 0 10px;
+	margin: 0 0 20px;
+	float: left;
+}
+
+.gallery-columns-1 .gallery-item {
+	width: 100%;
+}
+
+.gallery-columns-2 .gallery-item {
+	width: 50%;
+}
+
+.gallery-columns-3 .gallery-item {
+	width: 33.3%;
+}
+
+.gallery-columns-4 .gallery-item {
+	width: 25%;
+}
+
+.gallery-columns-5 .gallery-item {
+	width: 20%;
+}
+
+.gallery-columns-6 .gallery-item {
+	width: 16.6%;
+}
+
+.gallery-columns-7 .gallery-item {
+	width: 14.28%;
+}
+
+.gallery-columns-8 .gallery-item {
+	width: 12.5%;
+}
+
+.gallery-columns-9 .gallery-item {
+	width: 11.1%;
+}
+
+.gallery .gallery-item a {
+	display: block;
+	border: none;
+	line-height: 0;
+	text-align: center;
+}
+
+.gallery img {
+	width: 100%;
+}
+
+.gallery-caption {
+	position: absolute;
+	bottom: 10px;
+	left: 20px;
+	overflow: hidden;
+	max-width: calc(100% - 40px);
+	max-height: 50%;
+	padding: 12px 14px;
+	margin: 0;
+	background: #fff;
+	color: #000;
+	font-size: 12px;
+	line-height: 1.35;
+}
+
+.dark-mode .gallery-caption {
+	background: #1d1d1d;
+	color: #fff;
+}
+
+.gallery-columns-1 .gallery-caption,
+.gallery-columns-2 .gallery-caption,
+.gallery-columns-3 .gallery-caption {
+	bottom: 40px;
+	left: 50px;
+	max-width: calc(100% - 100px);
+	font-size: 14px;
+}
+
+.gallery-columns-3 .gallery-caption {
+	bottom: 30px;
+	left: 40px;
+	max-width: calc(100% - 80px);
+}
+
+/* TILED GALLERIES */
+
+.entry-content .tiled-gallery {
+	margin: 50px auto;
+}
+
+/*	10.	Comments
+/* ------------------------------------------------------------------------- */
+
+.comments,
+.comment-respond {
+	padding-top: 100px;
+}
+
+.comment-reply-title {
+	margin: 0 0 50px 0;
+	font-size: 28px;
+	font-weight: inherit;
+}
+
+.comment-reply-title small {
+	margin-left: 10px;
+	font-size: 20px;
+}
+
+.comment {
+	margin-top: 50px;
+	font-size: 18px;
+}
+
+.commentlist > .comment:first-child {
+	margin-top: 0;
+}
+
+.comment .comment {
+	margin-left: 50px;
+}
+
+.comment-author,
+.comment-meta {
+	line-height: 1.66;
+}
+
+.comment-author {
+	position: relative;
+}
+
+.comment-author .says {
+	display: none;
+}
+
+.comment-author .avatar {
+	position: absolute;
+	top: 0;
+	right: calc(100% + 20px);
+	display: block;
+	width: 55px;
+}
+
+.bypostauthor .comment-author {
+	text-transform: uppercase;
+}
+
+.comment-meta {
+	margin-bottom: 20px;
+}
+
+.comment-metadata {
+	color: rgba(0, 0, 0, 0.55);
+	line-height: 1.25;
+}
+
+.dark-mode .comment-metadata {
+	color: rgba(255, 255, 255, 0.55);
+}
+
+.comment-metadata a {
+	text-decoration: none;
+}
+
+.comment-metadata a:hover {
+	text-decoration: underline;
+}
+
+.comment-content,
+.comment-content p,
+.comment-content li {
+	line-height: 1.5;
+}
+
+.comment-content p,
+.comment-content li {
+	margin-bottom: 20px;
+}
+
+.comment-content *:last-child {
+	margin-bottom: 0;
+}
+
+.comment .reply {
+	margin-top: 22px;
+	font-size: 14px;
+	font-weight: 700;
+	letter-spacing: 0.05em;
+	text-transform: uppercase;
+}
+
+.comment .reply a {
+	text-decoration: none;
+}
+
+.comment .reply a:hover {
+	text-decoration: underline;
+}
+
+/* Comments Pagination ----------------------- */
+
+.comments-pagination {
+	position: relative;
+	margin-top: 100px;
+	text-align: center;
+}
+
+.comments-pagination a {
+	text-decoration: none;
+}
+
+.comments-pagination a:hover {
+	text-decoration: underline;
+}
+
+.comments-pagination .page-numbers {
+	display: inline-block;
+	padding: 0 3px;
+}
+
+.comments-pagination .page-numbers.dots {
+	color: rgba(0, 0, 0, 0.55);
+}
+
+.dark-mode .comments-pagination .page-numbers.dots {
+	color: rgba(255, 255, 255, 0.55);
+}
+
+.comments-pagination .prev,
+.comments-pagination .next {
+	position: absolute;
+	top: 0;
+	margin: 0 0 0 0;
+}
+
+.comments-pagination .prev {
+	left: 0;
+}
+
+.comments-pagination .next {
+	right: 0;
+}
+
+/* Respond ---------------------------- */
+
+.logged-in .comment-respond .comment-reply-title {
+	margin-bottom: 20px;
+}
+
+.comment-respond .logged-in-as {
+	margin: 0 0 50px 0;
+	color: rgba(0, 0, 0, 0.55);
+	font-size: 18px;
+	line-height: 1.25;
+}
+
+.dark-mode .comment-respond .logged-in-as {
+	color: rgba(255, 255, 255, 0.55);
+}
+
+.comment-respond .logged-in-as a {
+	text-decoration: none;
+}
+
+.comment-respond .logged-in-as a:hover {
+	text-decoration: underline;
+}
+
+.comment-respond p + p {
+	margin-top: 20px;
+}
+
+.comment-respond .comment-form-author,
+.comment-respond .comment-form-email {
+	width: calc(50% - 10px);
+	margin: 20px 0;
+	float: left;
+}
+
+.comment-respond .comment-form-email {
+	margin-left: 20px;
+}
+
+.comment-respond label {
+	display: block;
+}
+
+.comment-respond input[type="checkbox"] + label {
+	display: inline;
+	margin-left: 5px;
+	font-size: 14px;
+}
+
+/* Reply Respond ---------------------------- */
+
+.comments .comment-respond {
+	margin: 50px 0;
+}
+
+/*	11.	Page Templates
+/* ------------------------------------------------------------------------- */
+
+/* Resume Template ---------------------------- */
+
+.resume-template .entry-content {
+	max-width: 840px;
+	padding-left: 280px;
+}
+
+.resume-template .entry-content h1,
+.resume-template .entry-content h2,
+.resume-template .entry-content h3,
+.resume-template .entry-content h4,
+.resume-template .entry-content h5,
+.resume-template .entry-content h6 {
+	padding: 50px 580px 0 0;
+	border-top: 1px solid #000;
+	margin: 80px 0 -28px -280px;
+	font-size: 24px;
+	font-weight: 500;
+}
+
+.resume-template .entry-content > h1:first-child,
+.resume-template .entry-content > h2:first-child,
+.resume-template .entry-content > h3:first-child,
+.resume-template .entry-content > h4:first-child,
+.resume-template .entry-content > h5:first-child,
+.resume-template .entry-content > h6:first-child {
+	margin-top: 0;
+}
+
+.dark-mode.resume-template .entry-content h1,
+.dark-mode.resume-template .entry-content h2,
+.dark-mode.resume-template .entry-content h3,
+.dark-mode.resume-template .entry-content h4,
+.dark-mode.resume-template .entry-content h5,
+.dark-mode.resume-template .entry-content h6 {
+	border-top-color: rgba(255, 255, 255, 0.1);
+}
+
+.resume-template .entry-content .alignnone {
+	max-width: 100%;
+	margin-right: auto;
+	margin-left: auto;
+}
+
+/*	12.	Site Pagination
+/* ------------------------------------------------------------------------- */
+
+.post-pagination {
+	margin-top: 100px;
+}
+
+.post-pagination .previous-posts-link {
+	float: left;
+}
+
+.post-pagination .next-posts-link {
+	float: right;
+}
+
+.post-pagination a {
+	color: rgba(0, 0, 0, 0.55);
+	text-decoration: none;
+}
+
+.post-pagination a:hover {
+	color: #000;
+}
+
+.dark-mode .post-pagination a {
+	color: rgba(255, 255, 255, 0.55);
+}
+
+.dark-mode .post-pagination a:hover {
+	color: #fff;
+}
+
+/* Jetpack Infinite Scroll ------------------- */
+
+.infinite-scroll .post-pagination {
+	display: none;
+}
+
+/* Loading Button */
+
+.infinite-scroll .posts {
+	padding-bottom: 130px;
+}
+
+.infinite-scroll.infinity-end .posts {
+	padding-bottom: 0;
+}
+
+.infinite-scroll #infinite-handle {
+	position: absolute;
+	right: 0;
+	bottom: 0;
+	left: 0;
+	text-align: center;
+}
+
+.infinite-scroll #infinite-handle span {
+	padding: 0 0 0 0;
+	background: none;
+}
+
+.infinite-scroll #infinite-handle button,
+.infinite-scroll #infinite-handle button:hover,
+.infinite-scroll #infinite-handle button:focus {
+	padding: 0;
+	border-radius: 0;
+	background: none;
+	color: rgba(0, 0, 0, 0.55);
+	font-size: 40px;
+	font-weight: 300;
+	letter-spacing: -0.025em;
+}
+
+.infinite-scroll #infinite-handle button:hover,
+.infinite-scroll #infinite-handle button:focus {
+	color: #000;
+}
+
+.dark-mode.infinite-scroll #infinite-handle button,
+.dark-mode.infinite-scroll #infinite-handle button:hover,
+.dark-mode.infinite-scroll #infinite-handle button:focus {
+	color: rgba(255, 255, 255, 0.4);
+	font-weight: 400;
+}
+
+.dark-mode.infinite-scroll #infinite-handle button:hover,
+.dark-mode.infinite-scroll #infinite-handle button:focus {
+	color: #fff;
+}
+
+/* Loading Animation */
+
+.infinite-loader {
+	position: absolute;
+	bottom: 10px;
+	left: calc(50% - 20px);
+	width: 40px;
+	height: 40px;
+}
+
+.infinite-loader * {
+	display: none;
+}
+
+.infinite-loader::before,
+.infinite-loader::after {
+	position: absolute;
+	top: 0;
+	left: 0;
+	width: 100%;
+	height: 100%;
+	border-radius: 50%;
+	-webkit-animation: sk-bounce 2s infinite ease-in-out;
+	animation: sk-bounce 2s infinite ease-in-out;
+	background: rgba(0, 0, 0, 0.25);
+	content: "";
+	opacity: 0.6;
+}
+
+.dark-mode .infinite-loader::before,
+.dark-mode .infinite-loader::after {
+	background: rgba(255, 255, 255, 0.25);
+}
+
+.infinite-loader::after {
+	-webkit-animation-delay: -1s;
+	animation-delay: -1;
+}
+
+@-webkit-keyframes sk-bounce {
+
+	0%,
+	100% {
+		-webkit-transform: scale(0);
+	}
+
+	50% {
+		-webkit-transform: scale(1);
+	}
+
+}
+
+@keyframes sk-bounce {
+
+	0%,
+	100% {
+		-webkit-transform: scale(0);
+		transform: scale(0);
+	}
+
+	50% {
+		-webkit-transform: scale(1);
+		transform: scale(1);
+	}
+
+}
+
+/*	13.	Site Footer
+/* ------------------------------------------------------------------------- */
+
+.site-footer {
+	padding: 100px 0;
+	text-align: center;
+}
+
+.site-footer p {
+	margin: 0;
+	font-weight: 500;
+	line-height: 1;
+	text-align: center;
+}
+
+.site-footer p + p {
+	margin-top: 12px;
+	color: rgba(0, 0, 0, 0.55);
+	font-size: 18px;
+}
+
+.dark-mode .site-footer p + p {
+	color: rgba(255, 255, 255, 0.55);
+}
+
+.site-footer a {
+	border-bottom: 0.1rem solid transparent;
+	text-decoration: none;
+}
+
+.site-footer a:hover {
+	border-bottom-color: currentcolor;
+}
+
+/*	14.	Media Queries
+/* ------------------------------------------------------------------------- */
+
+/* 1380 PX */
+
+@media ( max-width: 1380px ) {
+
+	/* Entry Content ----------------------------- */
+
+	/* PAGE MEDIA */
+
+	.gallery {
+		left: calc(50% - 45vw - 10px);
+		width: calc(90vw + 20px);
+	}
+
+	/* PULL QUOTES */
+
+	.entry-content .pull {
+		position: static;
+	}
+
+	.entry-content .pull.left {
+		margin: 5px 40px 40px -80px;
+		float: left;
+	}
+
+	.entry-content .pull.right {
+		margin: 5px -80px 40px 40px;
+		float: right;
+	}
+
+}
+
+/* 1180 PX */
+
+@media ( max-width: 1377px ) {
+
+	/* Entry Content ----------------------------- */
+
+	.entry-content .alignwide {
+		width: 90vw;
+		max-width: 90vw;
+		margin-left: calc(50% - 45vw);
+	}
+
+}
+
+/* 1000 PX */
+
+@media ( max-width: 1000px ) {
+
+	/* Site Nav ----------------------------- */
+
+	.show-alt-nav .alt-nav-wrapper {
+		display: none;
+	}
+
+	.show-alt-nav .nav-toggle {
+		display: block;
+	}
+
+	/* Singular ----------------------------- */
+
+	.post-preview h2 {
+		font-size: 28px;
+	}
+
+	/* Page Templates ----------------------------- */
+
+	.resume-template .entry-content {
+		padding-left: 300px;
+	}
+
+	.resume-template .entry-content h1,
+	.resume-template .entry-content h2,
+	.resume-template .entry-content h3,
+	.resume-template .entry-content h4,
+	.resume-template .entry-content h5,
+	.resume-template .entry-content h6 {
+		padding: 50px 600px 0 0;
+		margin: 80px 0 -28px -300px;
+	}
+
+}
+
+/* 800 PX */
+
+@media ( max-width: 800px ) {
+
+	/* Page Templates ----------------------------- */
+
+	.resume-template .entry-content {
+		padding-left: 200px;
+	}
+
+	.resume-template .entry-content h1,
+	.resume-template .entry-content h2,
+	.resume-template .entry-content h3,
+	.resume-template .entry-content h4,
+	.resume-template .entry-content h5,
+	.resume-template .entry-content h6 {
+		padding: 50px 500px 0 0;
+		margin: 80px 0 -28px -200px;
+	}
+
+}
+
+/* 750 PX */
+
+@media ( max-width: 750px ) {
+
+	/* Navigation ----------------------------- */
+
+	.site-nav .menus > ul {
+		width: 100%;
+		float: none;
+	}
+
+	.site-nav .menus > ul + ul {
+		margin: 40px 0 0;
+	}
+
+	/* Entry Content ----------------------------- */
+
+	/* PAGE MEDIA */
+
+	.alignleft {
+		margin: 5px 25px 25px 0;
+	}
+
+	.alignright {
+		margin: 5px 0 25px 25px;
+	}
+
+	.alignnone {
+		max-width: 100%;
+	}
+
+	.alignnone,
+	.aligncenter {
+		margin: 40px auto;
+	}
+
+	.gallery {
+		margin: 40px auto 20px;
+	}
+
+	.gallery + .gallery {
+		margin-top: -20px;
+	}
+
+	.gallery-columns-1 .gallery-caption,
+	.gallery-columns-2 .gallery-caption,
+	.gallery-columns-3 .gallery-caption {
+		bottom: 10px;
+		left: 20px;
+		max-width: calc(100% - 40px);
+		font-size: 12px;
+	}
+
+	/* PULL QUOTES */
+
+	.entry-content .pull.left {
+		margin-left: 0;
+	}
+
+	.entry-content .pull.right {
+		margin-right: 0;
+	}
+
+	/* Comments ----------------------------- */
+
+	.comment-author,
+	.comment-metadata {
+		padding-left: 70px;
+	}
+
+	.comment-author .avatar {
+		left: 0;
+		width: 55px;
+	}
+
+}
+
+/* 620 PX */
+
+@media ( max-width: 620px ) {
+
+	body {
+		font-size: 18px;
+	}
+
+	/* Structure ----------------------------- */
+
+	/* BASE TYPOGRAPHY */
+
+	.title {
+		font-size: 30px;
+	}
+
+	/* Site Header ----------------------------- */
+
+	.site-header {
+		padding: 50px 0;
+	}
+
+	.wp-custom-logo .site-header {
+		padding: 35px 0;
+	}
+
+	/* Navigation ----------------------------- */
+
+	.site-nav {
+		margin-top: 124px;
+	}
+
+	.site-nav .menus {
+		padding-bottom: 40px;
+	}
+
+	.site-nav ul:first-child li {
+		font-size: 30px;
+	}
+
+	.site-nav ul + ul li {
+		font-size: 20px;
+		font-weight: 400;
+	}
+
+	.site-nav ul + ul li + li {
+		margin-top: 10px;
+	}
+
+	.site-nav footer {
+		display: none;
+	}
+
+	/* Singular ----------------------------- */
+
+	.page-header {
+		margin-bottom: 50px;
+	}
+
+	@supports ( display: -webkit-flex ) or ( display: -moz-flex ) or ( display: flex ) {
+
+		.page-header {
+			min-height: 150px;
+		}
+
+	}
+
+	.page-header p {
+		font-size: 1em;
+	}
+
+	.meta {
+		font-size: 0.9em;
+	}
+
+	.meta.bottom {
+		margin-top: 25px;
+	}
+
+	.meta.bottom p,
+	.meta.bottom p.tags {
+		max-width: none;
+		float: none;
+	}
+
+	.meta.bottom p.tags a {
+		margin-right: 15px;
+	}
+
+	.meta.bottom p + p {
+		margin-top: 8px;
+		float: none;
+	}
+
+	/* Archive ----------------------------- */
+
+	.posts {
+		position: relative;
+		left: calc(50% - 50vw + 2.5px);
+		width: calc(100vw - 5px);
+		margin: -10px 0;
+	}
+
+	.post-preview {
+		padding: 5px;
+	}
+
+	.post-preview header {
+		top: 20px;
+		right: 15px;
+		bottom: 20px;
+		left: 15px;
+	}
+
+	.post-preview .sticky-post {
+		margin-bottom: 5px;
+		font-size: 11px;
+		letter-spacing: 1px;
+	}
+
+	.post-preview h2 {
+		font-size: 20px;
+	}
+
+	/* SEARCH RESULTS */
+
+	.search-no-results .search-form {
+		display: block;
+		margin: 30px auto 0 auto;
+	}
+
+	.search-no-results .search-form label {
+		margin: 0 0 10px 0;
+	}
+
+	.search-no-results .search-form input[type="submit"] {
+		width: 100%;
+	}
+
+	/* PAGINATION */
+
+	.post-pagination {
+		margin-top: 50px;
+	}
+
+	.infinite-scroll .posts {
+		padding-bottom: 70px;
+	}
+
+	.infinite-scroll #infinite-handle button,
+	.infinite-scroll #infinite-handle button:hover,
+	.infinite-scroll #infinite-handle button:focus {
+		font-size: 30px;
+	}
+
+	/* Entry Content ----------------------------- */
+
+	.entry-content p {
+		margin-bottom: 25px;
+	}
+
+	/* PAGE MEDIA */
+
+	.gallery {
+		left: calc(50% - 50vw);
+		width: 100vw;
+		padding: 0 5px;
+		margin: 40px auto 30px;
+	}
+
+	.gallery + .gallery {
+		margin-top: -30px;
+	}
+
+	.gallery .gallery-item {
+		padding: 0 5px;
+		margin-bottom: 10px;
+	}
+
+	.gallery-caption {
+		display: none;
+	}
+
+	.gallery-columns-2 .gallery-item,
+	.gallery-columns-3 .gallery-item,
+	.gallery-columns-4 .gallery-item,
+	.gallery-columns-5 .gallery-item,
+	.gallery-columns-6 .gallery-item,
+	.gallery-columns-7 .gallery-item,
+	.gallery-columns-8 .gallery-item,
+	.gallery-columns-9 .gallery-item {
+		width: 50%;
+	}
+
+	/* PULL QUOTES */
+
+	.entry-content .pull.left,
+	.entry-content .pull.right,
+	.wp-block-pullquote.alignleft,
+	.wp-block-pullquote.alignright {
+		width: 100%;
+		max-width: 100%;
+		margin: 40px 0 40px 0;
+		float: none;
+	}
+
+	/* Comments ----------------------------- */
+
+	.comments,
+	.comment-respond {
+		padding-top: 50px;
+	}
+
+	.comments-pagination {
+		margin-top: 50px;
+	}
+
+	.comment-respond .comment-form-author,
+	.comment-respond .comment-form-email {
+		width: 100%;
+		margin: 20px 0 0;
+		float: none;
+	}
+
+	/* Page Templates ----------------------------- */
+
+	.resume-template .entry-content {
+		padding-left: 0;
+	}
+
+	.resume-template .entry-content h1,
+	.resume-template .entry-content h2,
+	.resume-template .entry-content h3,
+	.resume-template .entry-content h4,
+	.resume-template .entry-content h5,
+	.resume-template .entry-content h6 {
+		padding: 40px 0 0;
+		margin: 80px 0 35px 0;
+		font-size: 22px;
+	}
+
+	/* Site Footer ----------------------------- */
+
+	.site-footer {
+		padding: 50px 0;
+	}
+
+	.site-footer p + p {
+		font-size: 16px;
+	}
+
+}
+
+/* 400 PX */
+
+@media ( max-width: 400px ) {
+
+	/* Site Header ----------------------------- */
+
+	.site-header .site-title {
+		font-size: 20px;
+	}
+
+	/* Singular ----------------------------- */
+
+	.page-header p {
+		margin-top: 20px;
+	}
+
+	.page-header .meta {
+		margin-top: 25px;
+	}
+
+	/* Archive ----------------------------- */
+
+	.post-preview header {
+		top: 10px;
+		right: 10px;
+		bottom: 10px;
+		left: 10px;
+	}
+
+	.post-preview h2 {
+		font-size: 16px;
+		font-weight: 400;
+	}
+
+	/* Comments ----------------------------- */
+
+	.comments-pagination .page-numbers {
+		display: none;
+	}
+
+	.comments-pagination .page-numbers:first-child,
+	.comments-pagination .page-numbers:last-child {
+		position: static;
+		display: block;
+	}
+
+	.comments-pagination .page-numbers:first-child {
+		float: left;
+	}
+
+	.comments-pagination .page-numbers:last-child {
+		float: right;
+	}
+
+}
