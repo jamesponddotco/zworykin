@@ -2,7 +2,7 @@
 /**
  * Template part for displaying posts.
  *
- * @package Hamilton
+ * @package Zworykin
  */
 
 declare ( strict_types = 1 );
@@ -13,12 +13,12 @@ declare ( strict_types = 1 );
 	<header class="preview-header">
 
 		<?php if ( is_sticky() ) : ?>
-			<span class="sticky-post"><?php _e( 'Sticky', 'hamilton' ); ?></span>
+			<span class="sticky-post"><?php _e( 'Sticky', 'zworykin' ); ?></span>
 		<?php endif; ?>
 
 		<?php the_title( '<h2 class="title">', '</h2>' ); ?>
 
-		<?php hamilton_entry_date(); ?>
+		<?php zworykin_entry_date(); ?>
 
 	</header>
 

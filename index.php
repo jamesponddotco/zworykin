@@ -2,7 +2,7 @@
 /**
  * The main template file.
  *
- * @package Hamilton
+ * @package Zworykin
  */
 
 declare ( strict_types = 1 );
@@ -14,22 +14,22 @@ get_header();
 
 	<?php
 
-	$hamilton_archive_title_elem  = is_front_page() || ( is_home() && get_option( 'show_on_front' ) == 'posts' ) ? 'h2' : 'h1';
-	$hamilton_archive_title       = get_the_archive_title();
-	$hamilton_archive_description = get_the_archive_description();
+	$zworykin_archive_title_elem  = is_front_page() || ( is_home() && get_option( 'show_on_front' ) == 'posts' ) ? 'h2' : 'h1';
+	$zworykin_archive_title       = get_the_archive_title();
+	$zworykin_archive_description = get_the_archive_description();
 
-	if ( $hamilton_archive_title || $hamilton_archive_description ) :
+	if ( $zworykin_archive_title || $zworykin_archive_description ) :
 		?>
 
 		<header class="page-header fade-block">
 			<div>
 
-				<?php if ( $hamilton_archive_title ) : ?>
-					<<?php echo esc_html( $hamilton_archive_title_elem ); ?> class="title"><?php echo wp_kses_post( $hamilton_archive_title ); ?></<?php echo esc_html( $hamilton_archive_title_elem ); ?>>
+				<?php if ( $zworykin_archive_title ) : ?>
+					<<?php echo esc_html( $zworykin_archive_title_elem ); ?> class="title"><?php echo wp_kses_post( $zworykin_archive_title ); ?></<?php echo esc_html( $zworykin_archive_title_elem ); ?>>
 				<?php endif; ?>
 
-				<?php if ( $hamilton_archive_description ) : ?>
-					<div class="archive-description"><?php echo wp_kses_post( wpautop( $hamilton_archive_description ) ); ?></div>
+				<?php if ( $zworykin_archive_description ) : ?>
+					<div class="archive-description"><?php echo wp_kses_post( wpautop( $zworykin_archive_description ) ); ?></div>
 				<?php endif; ?>
 
 				<?php

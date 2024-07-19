@@ -17,14 +17,14 @@
   <rule ref="WordPress.WP.I18n">
 	<properties>
 	  <property name="text_domain" type="array">
-		<element value="hamilton"/>
+		<element value="zworykin"/>
 	  </property>
 	</properties>
   </rule>
   <rule ref="WordPress.NamingConventions.PrefixAllGlobals">
 	<properties>
 	  <property name="prefixes" type="array">
-		<element value="hamilton"/>
+		<element value="zworykin"/>
 	  </property>
 	</properties>
   </rule>

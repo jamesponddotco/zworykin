@@ -1,10 +1,10 @@
 /**
  * This file adds some LIVE to the Theme Customizer live preview. To leverage
  * this, set your custom settings to 'postMessage' and then add your handling
- * here. Your javascript should grab settings from customizer controls, and 
+ * here. Your javascript should grab settings from customizer controls, and
  * then make any necessary changes to the page using jQuery.
  */
- 
+
 ( function( $ ) {
 
 	// Site Name
@@ -22,7 +22,7 @@
 	} );
 
 	// Dark Mode
-	wp.customize( 'hamilton_dark_mode', function( value ) {
+	wp.customize( 'zworykin_dark_mode', function( value ) {
 		value.bind( function( newval ) {
 			if ( newval == true ) {
 				$( 'body' ).addClass( 'dark-mode' );
@@ -31,9 +31,9 @@
 			}
 		} );
 	} );
-	
+
 	// Alt Nav
-	wp.customize( 'hamilton_alt_nav', function( value ) {
+	wp.customize( 'zworykin_alt_nav', function( value ) {
 		value.bind( function( newval ) {
 			console.log( newval );
 			if ( newval == true ) {
@@ -43,9 +43,9 @@
 			}
 		} );
 	} );
-	
+
 	// Three grid columns
-	wp.customize( 'hamilton_max_columns', function( value ) {
+	wp.customize( 'zworykin_max_columns', function( value ) {
 		value.bind( function( newval ) {
 			if ( newval == true ) {
 				$( 'body' ).addClass( 'three-columns-grid' );
@@ -61,9 +61,9 @@
 			} );
 		} );
 	} );
-	
+
 	// Show preview titles
-	wp.customize( 'hamilton_show_titles', function( value ) {
+	wp.customize( 'zworykin_show_titles', function( value ) {
 		value.bind( function( newval ) {
 			if ( newval == true ) {
 				$( 'body' ).addClass( 'show-preview-titles' );
@@ -72,5 +72,5 @@
 			}
 		} );
 	} );
-	
+
 } )( jQuery );

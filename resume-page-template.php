@@ -2,7 +2,7 @@
 /**
  * The template for displaying a resume page.
  *
- * @package Hamilton
+ * @package Zworykin
  */
 
 declare ( strict_types = 1 );

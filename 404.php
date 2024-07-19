@@ -2,7 +2,7 @@
 /**
  * The template for displaying 404 pages (not found).
  *
- * @package Hamilton
+ * @package Zworykin
  */
 
 declare ( strict_types = 1 );
@@ -16,13 +16,13 @@ get_header();
 
 		<div>
 
-			<h1 class="title"><?php _e( 'Error 404', 'hamilton' ); ?></h1>
+			<h1 class="title"><?php _e( 'Error 404', 'zworykin' ); ?></h1>
 
-			<p><?php _e( "The page you're looking for could not be found. It may have been removed, renamed, or maybe it didn't exist in the first place.", 'hamilton' ); ?></p>
+			<p><?php _e( "The page you're looking for could not be found. It may have been removed, renamed, or maybe it didn't exist in the first place.", 'zworykin' ); ?></p>
 
 			<div class="meta">
 
-				<a href="<?php echo esc_url( home_url() ); ?>"><?php _e( 'To the front page', 'hamilton' ); ?></a>
+				<a href="<?php echo esc_url( home_url() ); ?>"><?php _e( 'To the front page', 'zworykin' ); ?></a>
 
 			</div>
 

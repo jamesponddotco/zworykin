@@ -2,7 +2,7 @@
 /**
  * The template for displaying the header section.
  *
- * @package Hamilton
+ * @package Zworykin
  */
 
 declare ( strict_types = 1 );
@@ -31,51 +31,51 @@ declare ( strict_types = 1 );
 		}
 		?>
 
-		<a class="skip-link button" href="#site-content"><?php _e( 'Skip to the content', 'hamilton' ); ?></a>
+		<a class="skip-link button" href="#site-content"><?php _e( 'Skip to the content', 'zworykin' ); ?></a>
 
 		<header class="section-inner site-header">
 
 			<?php
 
-			$hamilton_site_title_elem = is_front_page() || ( is_home() && get_option( 'show_on_front' ) == 'posts' ) ? 'h1' : 'div';
-			$hamilton_custom_logo_id  = get_theme_mod( 'custom_logo' );
-			$hamilton_custom_logo     = wp_get_attachment_image_src( $hamilton_custom_logo_id, 'full' );
-			$hamilton_site_title      = get_bloginfo( 'name' );
+			$zworykin_site_title_elem = is_front_page() || ( is_home() && get_option( 'show_on_front' ) == 'posts' ) ? 'h1' : 'div';
+			$zworykin_custom_logo_id  = get_theme_mod( 'custom_logo' );
+			$zworykin_custom_logo     = wp_get_attachment_image_src( $zworykin_custom_logo_id, 'full' );
+			$zworykin_site_title      = get_bloginfo( 'name' );
 
 			?>
 
-			<<?php echo esc_attr( $hamilton_site_title_elem ); ?> class="site-title">
+			<<?php echo esc_attr( $zworykin_site_title_elem ); ?> class="site-title">
 
 				<?php
-				if ( $hamilton_custom_logo ) :
+				if ( $zworykin_custom_logo ) :
 
-					$hamilton_logo_url = $hamilton_custom_logo[0];
-					$hamilton_height   = $hamilton_custom_logo[2];
+					$zworykin_logo_url = $zworykin_custom_logo[0];
+					$zworykin_height   = $zworykin_custom_logo[2];
 
 					// Determine which height logo we need the mobile nav to adjust for.
-					$hamilton_adjusted_height = $hamilton_height < 100 ? $hamilton_height : 100;
+					$zworykin_adjusted_height = $zworykin_height < 100 ? $zworykin_height : 100;
 					?>
 
 					<style>
-						.site-nav { padding-top: <?php echo esc_attr( $hamilton_adjusted_height + 160 ); ?>px; }
+						.site-nav { padding-top: <?php echo esc_attr( $zworykin_adjusted_height + 160 ); ?>px; }
 						@media ( max-width: 620px ) {
-							.site-nav { padding-top: <?php echo esc_attr( $hamilton_adjusted_height + 100 ); ?>px; }
+							.site-nav { padding-top: <?php echo esc_attr( $zworykin_adjusted_height + 100 ); ?>px; }
 						}
 					</style>
 
-					<a href="<?php echo esc_url( home_url() ); ?>" class="custom-logo" style="background-image: url( <?php echo esc_url( $hamilton_logo_url ); ?> );">
-						<img src="<?php echo esc_url( $hamilton_logo_url ); ?>" />
-						<span class="screen-reader-text"><?php echo esc_html( $hamilton_site_title ); ?></span>
+					<a href="<?php echo esc_url( home_url() ); ?>" class="custom-logo" style="background-image: url( <?php echo esc_url( $zworykin_logo_url ); ?> );">
+						<img src="<?php echo esc_url( $zworykin_logo_url ); ?>" />
+						<span class="screen-reader-text"><?php echo esc_html( $zworykin_site_title ); ?></span>
 					</a>
 
 				<?php else : ?>
-					<a href="<?php echo esc_url( home_url() ); ?>" class="site-name"><?php echo esc_html( $hamilton_site_title ); ?></a>
+					<a href="<?php echo esc_url( home_url() ); ?>" class="site-name"><?php echo esc_html( $zworykin_site_title ); ?></a>
 				<?php endif; ?>
 
-			</<?php echo esc_attr( $hamilton_site_title_elem ); ?>>
+			</<?php echo esc_attr( $zworykin_site_title_elem ); ?>>
 
 			<button class="nav-toggle">
-				<span class="screen-reader-text"><?php _e( 'Toggle menu', 'hamilton' ); ?></span>
+				<span class="screen-reader-text"><?php _e( 'Toggle menu', 'zworykin' ); ?></span>
 				<div class="bars">
 					<div class="bar"></div>
 					<div class="bar"></div>
@@ -111,12 +111,12 @@ declare ( strict_types = 1 );
 		</header><!-- header -->
 
 		<?php
-		$hamilton_bg_color         = get_background_color();
-		$hamilton_bg_color_default = 'ffffff';
-		$hamilton_bg_css           = $hamilton_bg_color && $hamilton_bg_color != $hamilton_bg_color_default ? ' style="background-color: #' . esc_attr( $hamilton_bg_color ) . ';"' : '';
+		$zworykin_bg_color         = get_background_color();
+		$zworykin_bg_color_default = 'ffffff';
+		$zworykin_bg_css           = $zworykin_bg_color && $zworykin_bg_color != $zworykin_bg_color_default ? ' style="background-color: #' . esc_attr( $zworykin_bg_color ) . ';"' : '';
 		?>
 
-		<nav class="site-nav"<?php echo esc_attr( $hamilton_bg_css ); ?>>
+		<nav class="site-nav"<?php echo esc_attr( $zworykin_bg_css ); ?>>
 
 			<div class="section-inner menus group">
 
@@ -155,12 +155,12 @@ declare ( strict_types = 1 );
 
 			</div>
 
-			<footer<?php echo esc_attr( $hamilton_bg_css ); ?>>
+			<footer<?php echo esc_attr( $zworykin_bg_css ); ?>>
 
 				<div class="section-inner group">
 
 					<p>&copy; <?php echo esc_html( gmdate( 'Y' ) ); ?> <a href="<?php echo esc_url( home_url() ); ?>" class="site-name"><?php bloginfo( 'name' ); ?></a></p>
-					<p class="theme-by"><?php _e( 'Theme by', 'hamilton' ); ?> <a href="https://www.andersnoren.se">Anders Nor&eacute;n</a></p>
+					<p class="theme-by"><?php _e( 'Theme by', 'zworykin' ); ?> <a href="https://www.andersnoren.se">Anders Nor&eacute;n</a></p>
 
 				</div>
 

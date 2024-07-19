@@ -2,7 +2,7 @@
 /**
  * The template for displaying comments.
  *
- * @package Hamilton
+ * @package Zworykin
  */
 
 declare ( strict_types = 1 );
@@ -24,7 +24,7 @@ if ( post_password_required() ) {
 
 		<div class="comments">
 
-			<h3 class="comment-reply-title"><?php _e( 'Comments', 'hamilton' ); ?></h3>
+			<h3 class="comment-reply-title"><?php _e( 'Comments', 'zworykin' ); ?></h3>
 
 			<?php
 

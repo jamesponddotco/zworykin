@@ -2,7 +2,7 @@
 /**
  * The template for displaying all single posts and attachments.
  *
- * @package Hamilton
+ * @package Zworykin
  */
 
 declare ( strict_types = 1 );
@@ -18,14 +18,14 @@ if ( have_posts() ) :
 		<article <?php post_class( 'entry section-inner' ); ?>>
 
 			<?php
-				$hamilton_fade_class = '';
+				$zworykin_fade_class = '';
 
 			if ( has_post_thumbnail() ) {
-				$hamilton_fade_class = ' fade-block';
+				$zworykin_fade_class = ' fade-block';
 			}
 			?>
 
-			<header class="page-header section-inner thin<?php echo esc_attr( $hamilton_fade_class ); ?>">
+			<header class="page-header section-inner thin<?php echo esc_attr( $zworykin_fade_class ); ?>">
 
 				<div>
 
@@ -45,7 +45,7 @@ if ( have_posts() ) :
 						<div class="meta">
 
 							<?php
-							echo esc_html__( 'In', 'hamilton' ) . ' ';
+							echo esc_html__( 'In', 'zworykin' ) . ' ';
 								the_category( ', ' );
 
 							if ( comments_open() ) :
@@ -53,10 +53,10 @@ if ( have_posts() ) :
 								<span>&bull;</span>
 								<?php
 									comments_popup_link(
-										__( 'Add Comment', 'hamilton' ),
-										__( '1 Comment', 'hamilton' ),
+										__( 'Add Comment', 'zworykin' ),
+										__( '1 Comment', 'zworykin' ),
 										// translators: %s is the number of comments.
-										sprintf( __( '%s Comments', 'hamilton' ), '%' ),
+										sprintf( __( '%s Comments', 'zworykin' ), '%' ),
 										''
 									);
 								?>
@@ -91,7 +91,7 @@ if ( have_posts() ) :
 
 			wp_link_pages(
 				array(
-					'before' => '<p class="section-inner thin linked-pages">' . __( 'Pages:', 'hamilton' ),
+					'before' => '<p class="section-inner thin linked-pages">' . __( 'Pages:', 'zworykin' ),
 				)
 			);
 
@@ -106,7 +106,7 @@ if ( have_posts() ) :
 
 					<?php endif; ?>
 
-					<p class="post-date"><a href="<?php the_permalink(); ?>"><?php hamilton_entry_date(); ?></a>
+					<p class="post-date"><a href="<?php the_permalink(); ?>"><?php zworykin_entry_date(); ?></a>
 
 				</div><!-- .meta -->
 
