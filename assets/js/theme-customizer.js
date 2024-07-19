@@ -21,17 +21,6 @@
 		} );
 	} );
 
-	// Dark Mode
-	wp.customize( 'zworykin_dark_mode', function( value ) {
-		value.bind( function( newval ) {
-			if ( newval == true ) {
-				$( 'body' ).addClass( 'dark-mode' );
-			} else {
-				$( 'body' ).removeClass( 'dark-mode' );
-			}
-		} );
-	} );
-
 	// Alt Nav
 	wp.customize( 'zworykin_alt_nav', function( value ) {
 		value.bind( function( newval ) {
@@ -40,35 +29,6 @@
 				$( 'body' ).addClass( 'show-alt-nav' );
 			} else {
 				$( 'body' ).removeClass( 'show-alt-nav' );
-			}
-		} );
-	} );
-
-	// Three grid columns
-	wp.customize( 'zworykin_max_columns', function( value ) {
-		value.bind( function( newval ) {
-			if ( newval == true ) {
-				$( 'body' ).addClass( 'three-columns-grid' );
-			} else {
-				$( 'body' ).removeClass( 'three-columns-grid' );
-			}
-			$( '.posts' ).masonry();
-			$( '.tracker' ).each( function() {
-				$( this ).addClass( 'will-spot' ).removeClass( 'spotted' );
-				if ( $( this ).offset().top < $( window ).height() ) {
-					$( this ).addClass( 'spotted' );
-				}
-			} );
-		} );
-	} );
-
-	// Show preview titles
-	wp.customize( 'zworykin_show_titles', function( value ) {
-		value.bind( function( newval ) {
-			if ( newval == true ) {
-				$( 'body' ).addClass( 'show-preview-titles' );
-			} else {
-				$( 'body' ).removeClass( 'show-preview-titles' );
 			}
 		} );
 	} );
