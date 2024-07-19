@@ -47,20 +47,7 @@ if ( have_posts() ) :
 							<?php
 							echo esc_html__( 'In', 'zworykin' ) . ' ';
 								the_category( ', ' );
-
-							if ( comments_open() ) :
-								?>
-								<span>&bull;</span>
-								<?php
-									comments_popup_link(
-										__( 'Add Comment', 'zworykin' ),
-										__( '1 Comment', 'zworykin' ),
-										// translators: %s is the number of comments.
-										sprintf( __( '%s Comments', 'zworykin' ), '%' ),
-										''
-									);
-								?>
-							<?php endif; ?>
+							?>
 
 						</div><!-- .meta -->
 
@@ -109,18 +96,6 @@ if ( have_posts() ) :
 					<p class="post-date"><a href="<?php the_permalink(); ?>"><?php zworykin_entry_date(); ?></a>
 
 				</div><!-- .meta -->
-
-			<?php endif; ?>
-
-			<?php
-
-			// Output comments wrapper if comments are open, or if there's a comment number – and check for password.
-			if ( ( comments_open() || get_comments_number() ) && ! post_password_required() ) :
-				?>
-
-				<div class="section-inner thin">
-					<?php comments_template(); ?>
-				</div><!-- .section-inner -->
 
 			<?php endif; ?>
 

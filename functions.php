@@ -62,7 +62,7 @@ function zworykin_setup(): void {
 	add_post_type_support( 'page', array( 'excerpt' ) );
 
 	// HTML5 semantic markup.
-	add_theme_support( 'html5', array( 'search-form', 'comment-form', 'comment-list', 'gallery', 'caption' ) );
+	add_theme_support( 'html5', array( 'search-form', 'gallery', 'caption' ) );
 
 	// Add Jetpack infinite scroll support.
 	add_theme_support(
@@ -133,10 +133,6 @@ function zworykin_enqueue_scripts(): void {
 		$theme_version,
 		true
 	);
-
-	if ( ( ! is_admin() ) && is_singular() && comments_open() && get_option( 'thread_comments' ) ) {
-		wp_enqueue_script( 'comment-reply' );
-	}
 }
 
 add_action( 'post_class', 'zworykin_post_classes' );

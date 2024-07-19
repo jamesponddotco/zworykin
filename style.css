@@ -27,11 +27,10 @@
 	7.  Singular
 	8.	Blocks
 	9.	Entry Content
-	10.	Comments
-	11.	Page Templates
-	12. Site Pagination
-	13. Site Footer
-	14. Media Queries
+	10.	Page Templates
+	11. Site Pagination
+	12. Site Footer
+	13. Media Queries
 
 ---------------------------------------------------------------------------- */
 
@@ -1765,216 +1764,7 @@ p.has-drop-cap:not(:focus)::first-letter {
 	margin: 50px auto;
 }
 
-/*	10.	Comments
-/* ------------------------------------------------------------------------- */
-
-.comments,
-.comment-respond {
-	padding-top: 100px;
-}
-
-.comment-reply-title {
-	margin: 0 0 50px 0;
-	font-size: 28px;
-	font-weight: inherit;
-}
-
-.comment-reply-title small {
-	margin-left: 10px;
-	font-size: 20px;
-}
-
-.comment {
-	margin-top: 50px;
-	font-size: 18px;
-}
-
-.commentlist > .comment:first-child {
-	margin-top: 0;
-}
-
-.comment .comment {
-	margin-left: 50px;
-}
-
-.comment-author,
-.comment-meta {
-	line-height: 1.66;
-}
-
-.comment-author {
-	position: relative;
-}
-
-.comment-author .says {
-	display: none;
-}
-
-.comment-author .avatar {
-	position: absolute;
-	top: 0;
-	right: calc(100% + 20px);
-	display: block;
-	width: 55px;
-}
-
-.bypostauthor .comment-author {
-	text-transform: uppercase;
-}
-
-.comment-meta {
-	margin-bottom: 20px;
-}
-
-.comment-metadata {
-	color: rgba(0, 0, 0, 0.55);
-	line-height: 1.25;
-}
-
-.dark-mode .comment-metadata {
-	color: rgba(255, 255, 255, 0.55);
-}
-
-.comment-metadata a {
-	text-decoration: none;
-}
-
-.comment-metadata a:hover {
-	text-decoration: underline;
-}
-
-.comment-content,
-.comment-content p,
-.comment-content li {
-	line-height: 1.5;
-}
-
-.comment-content p,
-.comment-content li {
-	margin-bottom: 20px;
-}
-
-.comment-content *:last-child {
-	margin-bottom: 0;
-}
-
-.comment .reply {
-	margin-top: 22px;
-	font-size: 14px;
-	font-weight: 700;
-	letter-spacing: 0.05em;
-	text-transform: uppercase;
-}
-
-.comment .reply a {
-	text-decoration: none;
-}
-
-.comment .reply a:hover {
-	text-decoration: underline;
-}
-
-/* Comments Pagination ----------------------- */
-
-.comments-pagination {
-	position: relative;
-	margin-top: 100px;
-	text-align: center;
-}
-
-.comments-pagination a {
-	text-decoration: none;
-}
-
-.comments-pagination a:hover {
-	text-decoration: underline;
-}
-
-.comments-pagination .page-numbers {
-	display: inline-block;
-	padding: 0 3px;
-}
-
-.comments-pagination .page-numbers.dots {
-	color: rgba(0, 0, 0, 0.55);
-}
-
-.dark-mode .comments-pagination .page-numbers.dots {
-	color: rgba(255, 255, 255, 0.55);
-}
-
-.comments-pagination .prev,
-.comments-pagination .next {
-	position: absolute;
-	top: 0;
-	margin: 0 0 0 0;
-}
-
-.comments-pagination .prev {
-	left: 0;
-}
-
-.comments-pagination .next {
-	right: 0;
-}
-
-/* Respond ---------------------------- */
-
-.logged-in .comment-respond .comment-reply-title {
-	margin-bottom: 20px;
-}
-
-.comment-respond .logged-in-as {
-	margin: 0 0 50px 0;
-	color: rgba(0, 0, 0, 0.55);
-	font-size: 18px;
-	line-height: 1.25;
-}
-
-.dark-mode .comment-respond .logged-in-as {
-	color: rgba(255, 255, 255, 0.55);
-}
-
-.comment-respond .logged-in-as a {
-	text-decoration: none;
-}
-
-.comment-respond .logged-in-as a:hover {
-	text-decoration: underline;
-}
-
-.comment-respond p + p {
-	margin-top: 20px;
-}
-
-.comment-respond .comment-form-author,
-.comment-respond .comment-form-email {
-	width: calc(50% - 10px);
-	margin: 20px 0;
-	float: left;
-}
-
-.comment-respond .comment-form-email {
-	margin-left: 20px;
-}
-
-.comment-respond label {
-	display: block;
-}
-
-.comment-respond input[type="checkbox"] + label {
-	display: inline;
-	margin-left: 5px;
-	font-size: 14px;
-}
-
-/* Reply Respond ---------------------------- */
-
-.comments .comment-respond {
-	margin: 50px 0;
-}
-
-/*	11.	Page Templates
+/*	10.	Page Templates
 /* ------------------------------------------------------------------------- */
 
 /* Resume Template ---------------------------- */
@@ -2021,7 +1811,7 @@ p.has-drop-cap:not(:focus)::first-letter {
 	margin-left: auto;
 }
 
-/*	12.	Site Pagination
+/*	11.	Site Pagination
 /* ------------------------------------------------------------------------- */
 
 .post-pagination {
@@ -2178,7 +1968,7 @@ p.has-drop-cap:not(:focus)::first-letter {
 
 }
 
-/*	13.	Site Footer
+/*	12.	Site Footer
 /* ------------------------------------------------------------------------- */
 
 .site-footer {
@@ -2210,7 +2000,7 @@ p.has-drop-cap:not(:focus)::first-letter {
 	border-bottom-color: currentcolor;
 }
 
-/*	14.	Media Queries
+/*	13.	Media Queries
 /* ------------------------------------------------------------------------- */
 
 /* 1380 PX */
@@ -2379,18 +2169,6 @@ p.has-drop-cap:not(:focus)::first-letter {
 
 	.entry-content .pull.right {
 		margin-right: 0;
-	}
-
-	/* Comments ----------------------------- */
-
-	.comment-author,
-	.comment-metadata {
-		padding-left: 70px;
-	}
-
-	.comment-author .avatar {
-		left: 0;
-		width: 55px;
 	}
 
 }
@@ -2601,24 +2379,6 @@ p.has-drop-cap:not(:focus)::first-letter {
 		float: none;
 	}
 
-	/* Comments ----------------------------- */
-
-	.comments,
-	.comment-respond {
-		padding-top: 50px;
-	}
-
-	.comments-pagination {
-		margin-top: 50px;
-	}
-
-	.comment-respond .comment-form-author,
-	.comment-respond .comment-form-email {
-		width: 100%;
-		margin: 20px 0 0;
-		float: none;
-	}
-
 	/* Page Templates ----------------------------- */
 
 	.resume-template .entry-content {
@@ -2680,26 +2440,6 @@ p.has-drop-cap:not(:focus)::first-letter {
 	.post-preview h2 {
 		font-size: 16px;
 		font-weight: 400;
-	}
-
-	/* Comments ----------------------------- */
-
-	.comments-pagination .page-numbers {
-		display: none;
-	}
-
-	.comments-pagination .page-numbers:first-child,
-	.comments-pagination .page-numbers:last-child {
-		position: static;
-		display: block;
-	}
-
-	.comments-pagination .page-numbers:first-child {
-		float: left;
-	}
-
-	.comments-pagination .page-numbers:last-child {
-		float: right;
 	}
 
 }
