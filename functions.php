@@ -125,11 +125,7 @@ function zworykin_enqueue_scripts(): void {
 	wp_enqueue_script(
 		'zworykin_global',
 		get_template_directory_uri() . '/assets/js/global.js',
-		array(
-			'jquery',
-			'imagesloaded',
-			'masonry',
-		),
+		array(),
 		$theme_version,
 		true
 	);
