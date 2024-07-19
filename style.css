@@ -1085,8 +1085,7 @@ main {
 	max-width: 100%;
 	min-height: 250px;
 	flex-direction: column;
-	margin: 0 auto 100px auto;
-	text-align: center;
+	margin: 0 auto 100px 0;
 }
 
 .page-header > div {
@@ -2178,14 +2177,12 @@ p.has-drop-cap:not(:focus)::first-letter {
 
 .site-footer {
 	padding: 100px 0;
-	text-align: center;
 }
 
 .site-footer p {
 	margin: 0;
 	font-weight: 500;
 	line-height: 1;
-	text-align: center;
 }
 
 .site-footer p + p {
