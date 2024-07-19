@@ -1028,12 +1028,6 @@ main {
 	background: rgba(0, 0, 0, 0.6);
 }
 
-.post-preview:hover header,
-.show-preview-titles .post-preview header {
-	opacity: 1;
-	transform: translateY(0);
-}
-
 /* THREE COLUMNS */
 
 @media ( min-width: 1001px ) {
